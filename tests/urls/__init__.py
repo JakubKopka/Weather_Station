@@ -1,7 +1,6 @@
 from unittest import TestCase
 from stacjapogodowa.views import StronaGlownaView, TemperaturaView, CisnienieView, WiatrViews, WilgotnoscView
 
-
 class TestStronaGlowna(TestCase):
     pass
 

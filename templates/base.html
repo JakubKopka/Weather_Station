@@ -2,6 +2,7 @@
 <html lang="en">
 {% load static %}
 <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script src="https://use.fontawesome.com/dc8c77f78a.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -57,7 +58,7 @@
                         </div>
                     </li>
                     <li>
-                        <a href="{% url 'StronaGlowna' %}" class="waves-effect"><i class="glyphicon glyphicon-fire fa-fw"></i>Strona Główna</a>
+                        <a href="{% url 'StronaGlowna' %}" class="waves-effect"><i class="fa fa-home fa-fw"></i>Strona Główna</a>
                     </li>
                     <li>
                         <a href="{% url 'Temperatura' %}" class="waves-effect"><i class="fa fa-thermometer-half fa-fw" aria-hidden="true"></i>Temperatura</a>
@@ -69,7 +70,7 @@
                         <a href="{% url 'Wilgotnosc' %}" class="waves-effect"><i class="fa fa-tint fa-fw" ></i>Wilgotność</a>
                     </li>
                     <li>
-                        <a href="{% url 'Wiatr' %}" class="waves-effect"><i class="fa fa-tint fa-fw" ></i>Wiatr</a>
+                        <a href="{% url 'Wiatr' %}" class="waves-effect"><i class="fa fa-cloud fa-fw"></i></i>Wiatr</a>
                     </li>
                 </ul>
                 <!--<div class="center p-20">-->

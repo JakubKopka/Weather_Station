@@ -8,12 +8,14 @@ from django.http import HttpResponse
 from django.views.generic.base import TemplateView
 from stacjapogodowa.models import Odczyty
 
+
 class StronaGlownaView(TemplateView):
     title = 'Strona Główna'
     template_name = 'index.html'
 
     def get_context_data(self, **kwargs):
         context = super(StronaGlownaView, self).get_context_data(**kwargs)
+        context['odczyty'] = Odczyty.objects.all()
         context['title'] = self.title
         return context
 

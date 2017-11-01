@@ -1,31 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-
+{% load static %}
 <head>
     <script src="https://use.fontawesome.com/dc8c77f78a.js"></script>
-
-<script src="jd/Chart.bundle.js"></script>
-    <script src="js/utils.js"></script>
-    <style>
-    canvas {
-        -moz-user-select: none;
-        -webkit-user-select: none;
-        -ms-user-select: none;
-    }
-    </style>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-    <title>My Admin - is a responsive admin template</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static "images/favicon.png" %}">
+    <title>{{ title }}</title>
     <!-- Bootstrap Core CSS -->
-    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="{% static "bower_components/bootstrap/dist/css/bootstrap.min.css" %}" rel="stylesheet">
     <!-- Menu CSS -->
-    <link href="bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+    <link href="{% static "bower_components/metisMenu/dist/metisMenu.min.css" %}" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="{% static "css/style.css" %}" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -43,7 +33,7 @@
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" style="margin-bottom: 0">
             <div class="navbar-header"> <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="ti-menu"></i></a>
-                <div class="top-left-part"><a class="logo" href="#"><i class="glyphicon glyphicon-fire"></i>&nbsp;<span class="hidden-xs">Surf Portal</span></a></div>
+                <div class="top-left-part"><a class="logo"><i class="glyphicon glyphicon-fire"></i>&nbsp;<span class="hidden-xs">Surf Portal</span></a></div>
                 <ul class="nav navbar-top-links navbar-left hidden-xs">
                     <li><a href="javascript:void(0)" class="open-close hidden-xs hidden-lg waves-effect waves-light"><i class="ti-arrow-circle-left ti-menu"></i></a></li>
                 </ul>
@@ -67,16 +57,19 @@
                         </div>
                     </li>
                     <li>
-                        <a href="#" class="waves-effect"><i class="glyphicon glyphicon-fire fa-fw"></i>Strona Główna</a>
+                        <a href="{% url 'StronaGlowna' %}" class="waves-effect"><i class="glyphicon glyphicon-fire fa-fw"></i>Strona Główna</a>
                     </li>
                     <li>
-                        <a href="#" class="waves-effect"><i class="fa fa-thermometer-half fa-fw" aria-hidden="true"></i>Temperatura</a>
+                        <a href="{% url 'Temperatura' %}" class="waves-effect"><i class="fa fa-thermometer-half fa-fw" aria-hidden="true"></i>Temperatura</a>
                     </li>
                     <li>
-                        <a href="#" class="waves-effect"><i class="fa fa-tachometer fa-fw" aria-hidden="true"></i>Ciśnienie</a>
+                        <a href="{% url 'Cisnienie' %}" class="waves-effect"><i class="fa fa-tachometer fa-fw" aria-hidden="true"></i>Ciśnienie</a>
                     </li>
                     <li>
-                        <a href="#" class="waves-effect"><i class="fa fa-tint fa-fw" ></i>Wilgotność</a>
+                        <a href="{% url 'Wilgotnosc' %}" class="waves-effect"><i class="fa fa-tint fa-fw" ></i>Wilgotność</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'Wiatr' %}" class="waves-effect"><i class="fa fa-tint fa-fw" ></i>Wiatr</a>
                     </li>
                 </ul>
                 <!--<div class="center p-20">-->
@@ -92,13 +85,11 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="white-box">
-                            <h3>Strona Główna</h3>
+                            <h3>{{ title }}</h3>
                         </div>
                         <div class="white-box">
-                            <h4>Wykres</h4>
-                            <center>
-                            <img src="https://i.pinimg.com/736x/f9/28/e2/f928e27b6513d0d9c25a1b80293b12d1--under-construction-sign-construction-clipart.jpg" />
-                            </center>
+                            {% block content %}
+                            {% endblock %}
                         </div>
                     </div>
                 </div>
@@ -112,17 +103,17 @@
     </div>
     <!-- /#wrapper -->
     <!-- jQuery -->
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="{% static "bower_components/jquery/dist/jquery.min.js" %}"></script>
     <!-- Bootstrap Core JavaScript -->
-    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="{% static "bower_components/bootstrap/dist/js/bootstrap.min.js" %}"></script>
     <!-- Menu Plugin JavaScript -->
-    <script src="bower_components/metisMenu/dist/metisMenu.min.js"></script>
+    <script src="{% static "bower_components/metisMenu/dist/metisMenu.min.js" %}"></script>
     <!--Nice scroll JavaScript -->
-    <script src="js/jquery.nicescroll.js"></script>
+    <script src="{% static "js/jquery.nicescroll.js" %}"></script>
     <!--Wave Effects -->
-    <script src="js/waves.js"></script>
+    <script src="{% static "js/waves.js" %}"></script>
     <!-- Custom Theme JavaScript -->
-    <script src="js/myadmin.js"></script>
+    <script src="{% static "js/myadmin.js" %}"></script>
 </body>
 
 </html>

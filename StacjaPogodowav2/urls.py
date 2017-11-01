@@ -15,13 +15,14 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+
 from stacjapogodowa.views import StronaGlownaView, TemperaturaView, CisnienieView, WiatrViews, WilgotnoscView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', StronaGlownaView.as_view()),
-    url(r'^temperatura/', TemperaturaView.as_view()),
-    url(r'^cisnienie/', CisnienieView.as_view()),
-    url(r'^wiatr/', WiatrViews.as_view()),
-    url(r'^wilgotnosc/', WilgotnoscView.as_view()),
+    url(r'^$', StronaGlownaView.as_view(), name='StronaGlowna'),
+    url(r'^temperatura/', TemperaturaView.as_view(), name='Temperatura'),
+    url(r'^cisnienie/', CisnienieView.as_view(), name='Cisnienie'),
+    url(r'^wiatr/', WiatrViews.as_view(), name='Wiatr'),
+    url(r'^wilgotnosc/', WilgotnoscView.as_view(), name='Wilgotnosc'),
 ]

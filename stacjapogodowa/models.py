@@ -6,7 +6,7 @@ class Odczyty(models.Model):
     wilgotnosc = models.FloatField()
     cisnienie = models.FloatField()
     sila_wiatru = models.FloatField()
-    kierunek_wiatru = models.CharField(max_length=3)
+    # kierunek_wiatru = models.CharField(max_length=3)
 
     class Meta:
         verbose_name = ("Odczyt")
@@ -19,7 +19,7 @@ class Odczyty_Algorytm(models.Model):
     wilgotnosc = models.FloatField()
     cisnienie = models.FloatField()
     sila_wiatru = models.FloatField()
-    kierunek_wiatru = models.CharField(max_length=3)
+    # kierunek_wiatru = models.CharField(max_length=3)
 
     class Meta:
         verbose_name = ("Odczyt stworozny przez algorytm")

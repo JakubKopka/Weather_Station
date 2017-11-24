@@ -44,8 +44,17 @@ class CisnienieView(TemplateView):
     title = 'Ciśnienie'
 
     def get_context_data(self, **kwargs):
+        odczyty = Odczyty.objects.all();
+        cisnienie = [];
+        data = [];
+        for i in odczyty:
+            cisnienie.append(i.cisnienie)
+            data.append(str(i.data_odczytu))
         context = super(CisnienieView, self).get_context_data(**kwargs)
         context['title'] = self.title
+        context['dane'] = cisnienie
+        context['data'] = ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"]
+        print data
         return context
 
 class WiatrViews(TemplateView):

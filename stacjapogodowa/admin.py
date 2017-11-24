@@ -6,7 +6,7 @@ from .models import Odczyty, Odczyty_Algorytm
 
 
 class OdczytyAdmin(admin.ModelAdmin):
-    list_display = ('id', 'data_odczytu', 'temperatura', 'wilgotnosc', 'cisnienie', 'sila_wiatru', 'kierunek_wiatru')
+    list_display = ('id', 'data_odczytu', 'temperatura', 'wilgotnosc', 'cisnienie', 'sila_wiatru')
 
 
 admin.site.register(Odczyty, OdczytyAdmin)

@@ -8,7 +8,7 @@
             <th>Temperatura</th>
             <th>Wilgotność</th>
             <th>Siła Waitru</th>
-            <th>Kierunek Waitru</th>
+{#            <th>Kierunek Waitru</th>#}
         </tr>
         {% for o in odczyty %}
             <tr>
@@ -17,7 +17,7 @@
                 <td>{{ o.temperatura }}</td>
                 <td>{{ o.wilgotnosc }}</td>
                 <td>{{ o.sila_wiatru }}</td>
-                <td>{{ o.kierunek_wiatru }}</td>
+{#                <td>{{ o.kierunek_wiatru }}</td>#}
             </tr>
         {% endfor %}
     </table>

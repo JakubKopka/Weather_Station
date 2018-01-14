@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
+{% block extra_js %}
 
+{% endblock %}
 {% block content %}
     <table style="width:100%">
         <tr>
@@ -7,6 +9,7 @@
             <th>Data Odczytu</th>
             <th>Temperatura</th>
             <th>Wilgotność</th>
+            <th>Cisnienie</th>
             <th>Siła Waitru</th>
 {#            <th>Kierunek Waitru</th>#}
         </tr>
@@ -16,6 +19,7 @@
                 <td>{{ o.data_odczytu|date:'Y-m-d H:i:s' }}</td>
                 <td>{{ o.temperatura }}</td>
                 <td>{{ o.wilgotnosc }}</td>
+                <td>{{ o.cisnienie }}</td>
                 <td>{{ o.sila_wiatru }}</td>
 {#                <td>{{ o.kierunek_wiatru }}</td>#}
             </tr>

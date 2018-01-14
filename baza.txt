@@ -1,0 +1,8 @@
+CREATE TABLE Odczyty (
+     ID int NOT NULL AUTO_INCREMENT,
+     Data DATETIME,
+     Temperatura float,
+     Cisnienie float,
+     Wilgotnosc float,
+     PRIMARY KEY(ID)
+ );

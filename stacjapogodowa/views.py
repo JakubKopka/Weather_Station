@@ -52,9 +52,10 @@ class CisnienieView(TemplateView):
             data.append(str(i.data_odczytu))
         context = super(CisnienieView, self).get_context_data(**kwargs)
         context['title'] = self.title
-        context['dane'] = cisnienie
-        context['data'] = ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"]
-        print data
+        # context['dane'] = cisnienie
+        # context['data'] = ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"]
+        context['data'] = {'Python': 52.9, 'Jython': 1.6, 'Iron Python': 27.7}
+        context['line_data'] = list(enumerate(range(1, 20)))
         return context
 
 class WiatrViews(TemplateView):

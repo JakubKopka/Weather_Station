@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'stacjapogodowa.apps.StacjapogodowaConfig',
+    'graphos',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +128,5 @@ STATIC_ROOT = ''
 STATICFILES_DIRS = (
     os.path.join('static'),
 )
+
+#

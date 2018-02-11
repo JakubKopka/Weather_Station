@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+import datetime
+
+from celery.schedules import crontab
 from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponse
@@ -35,8 +38,42 @@ class WilgotnoscView(TemplateView):
     title = 'Wilgotność'
 
     def get_context_data(self, **kwargs):
+        odczyty = Odczyty.objects.all()[:20]
+        cisnienie = [];
+        data = [];
         context = super(WilgotnoscView, self).get_context_data(**kwargs)
         context['title'] = self.title
+
+        for i in odczyty:
+            data2 = i.data_odczytu.strftime("%H:%M")
+            data.append([i.wilgotnosc, data2])
+
+        # context['dane'] = cisnienie
+        # context['data'] = ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"]
+        context['data'] = data
+
+        print context['data']
+
+        from graphos.sources.simple import SimpleDataSource
+        from graphos.renderers.gchart import LineChart
+
+        data = [
+            ['Data', 'Odczyty', 'Algorytm'],
+        ]
+        for i in odczyty:
+
+            data2 = i.data_odczytu.strftime('%H:%M')
+            data.append([data2, i.wilgotnosc, 10])
+
+
+        # DataSource object
+        data_source = SimpleDataSource(data=data)
+        # Chart object
+        chart = LineChart(data_source)
+        chart.width = 1600
+        chart.height = 600
+        context = {'chart': chart}
+
         return context
 
 class CisnienieView(TemplateView):
@@ -47,16 +84,19 @@ class CisnienieView(TemplateView):
         odczyty = Odczyty.objects.all();
         cisnienie = [];
         data = [];
-        for i in odczyty:
-            cisnienie.append(i.cisnienie)
-            data.append(str(i.data_odczytu))
-        context = super(CisnienieView, self).get_context_data(**kwargs)
-        context['title'] = self.title
-        # context['dane'] = cisnienie
-        # context['data'] = ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"]
-        context['data'] = {'Python': 52.9, 'Jython': 1.6, 'Iron Python': 27.7}
-        context['line_data'] = list(enumerate(range(1, 20)))
-        return context
+
+        # for i in odczyty:
+        #     dict = {}
+        #     dict.update(i.cisnienie,str(i.data_odczytu) )
+        #     data.append(dict)
+        # context = super(CisnienieView, self).get_context_data(**kwargs)
+        # context['title'] = self.title
+        # # context['dane'] = cisnienie
+        # # context['data'] = ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"]
+        # context['data'] = data
+        #
+        # print context['data']
+        # return context
 
 class WiatrViews(TemplateView):
     template_name = 'wiatr.html'
@@ -66,3 +106,7 @@ class WiatrViews(TemplateView):
         context = super(WiatrViews, self).get_context_data(**kwargs)
         context['title'] = self.title
         return context
+
+
+
+

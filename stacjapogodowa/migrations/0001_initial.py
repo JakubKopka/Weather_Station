@@ -21,7 +21,6 @@ class Migration(migrations.Migration):
                 ('temperatura', models.FloatField()),
                 ('wilgotnosc', models.FloatField()),
                 ('cisnienie', models.FloatField()),
-                ('sila_wiatru', models.FloatField()),
             ],
         ),
     ]

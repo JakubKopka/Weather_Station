@@ -26,7 +26,10 @@ SECRET_KEY = '0$uo-lfwzwjswul_%gtw9j0i+50(o=op^!ox_57k4ee_lam!=i'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '54.37.138.103',
+    '127.0.0.1'
+]
 
 
 # Application definition
@@ -84,6 +87,19 @@ DATABASES = {
     }
 }
 
+# Baza danych na server
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'PracaLicencjacka',
+#         'USER': 'root',
+#         'PASSWORD': 'kuba960128',
+#         'HOST': '',
+#         'PORT': '1540',
+#     }
+# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -128,3 +144,10 @@ STATIC_ROOT = ''
 STATICFILES_DIRS = (
     os.path.join('static'),
 )
+
+
+# Opcje wykresow
+SZEROKOSC = 1700
+WYSOKOSC = 600
+POINT_SIZE = 8
+ILOSC_ODCZYTOW = 20

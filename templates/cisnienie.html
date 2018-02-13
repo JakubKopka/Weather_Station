@@ -68,8 +68,18 @@
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
     google.load("visualization", "1", {packages:["corechart"]});
+    var options = {
+          title: 'Company Performance',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
+    setTimeout(function(){
+   getById(test).reload(1);
+}, 5000);
 </script>
 {% endblock %}
 {% block content %}
+    <div test>
     {{ chart.as_html }}
+</div>
 {% endblock %}

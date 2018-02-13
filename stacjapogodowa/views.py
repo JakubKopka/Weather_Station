@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from graphos.sources.simple import SimpleDataSource
 from graphos.renderers.gchart import LineChart
+from django.conf import settings
 
 
 
@@ -26,7 +27,7 @@ class TemperaturaView(TemplateView):
     title = 'Temperatura'
 
     def get_context_data(self, **kwargs):
-        odczyty = Odczyty.objects.all()[:20]
+        odczyty = Odczyty.objects.all()[:settings.ILOSC_ODCZYTOW]
 
         data = [
             ['Data', 'Odczyty', 'Algorytm'],
@@ -39,8 +40,11 @@ class TemperaturaView(TemplateView):
         data_source = SimpleDataSource(data=data)
         # Chart object
         chart = LineChart(data_source)
-        chart.width = 1700
-        chart.height = 600
+        chart.width = settings.SZEROKOSC
+        chart.height = settings.WYSOKOSC
+        chart.options['title'] = "Wykres Temperatury - ostatnia godzina"
+        chart.options['pointSize'] = settings.POINT_SIZE
+
         context = {'chart': chart}
         context['title'] = self.title
 
@@ -52,7 +56,7 @@ class WilgotnoscView(TemplateView):
     title = 'Wilgotność'
 
     def get_context_data(self, **kwargs):
-        odczyty = Odczyty.objects.all()[:20]
+        odczyty = Odczyty.objects.all()[:settings.ILOSC_ODCZYTOW]
 
         data = [
             ['Data', 'Odczyty', 'Algorytm'],
@@ -67,8 +71,11 @@ class WilgotnoscView(TemplateView):
         data_source = SimpleDataSource(data=data)
         # Chart object
         chart = LineChart(data_source)
-        chart.width = 1700
-        chart.height = 600
+        chart.options['title'] = "Wykres Wilgotności - ostatnia godzina"
+        chart.width = settings.SZEROKOSC
+        chart.height = settings.WYSOKOSC
+        chart.options['pointSize'] = settings.POINT_SIZE
+
         context = {'chart': chart}
         context['title'] = self.title
 
@@ -79,7 +86,7 @@ class CisnienieView(TemplateView):
     title = 'Ciśnienie'
 
     def get_context_data(self, **kwargs):
-        odczyty = Odczyty.objects.all()[:20]
+        odczyty = Odczyty.objects.all()[:settings.ILOSC_ODCZYTOW]
 
         data = [
             ['Data', 'Odczyty', 'Algorytm'],
@@ -92,8 +99,12 @@ class CisnienieView(TemplateView):
         data_source = SimpleDataSource(data=data)
         # Chart object
         chart = LineChart(data_source)
-        chart.width = 1700
-        chart.height = 600
+        chart.options['title'] = "Wykres Ciśinienia - ostatnia godzina"
+        chart.options['subtitle'] = 'test'
+        chart.width = settings.SZEROKOSC
+        chart.height = settings.WYSOKOSC
+        chart.options['pointSize'] = settings.POINT_SIZE
+
         context = {'chart': chart}
         context['title'] = self.title
 

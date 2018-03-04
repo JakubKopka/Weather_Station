@@ -80,25 +80,25 @@ WSGI_APPLICATION = 'StacjaPogodowav2.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
-# Baza danych na server
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'PracaLicencjacka',
-#         'USER': 'root',
-#         'PASSWORD': 'kuba960128',
-#         'HOST': '',
-#         'PORT': '1540',
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
+
+# Baza danych na server
+#
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'PracaLicencjacka',
+        'USER': 'monty',
+        'PASSWORD': 'some_pass',
+        'HOST': '54.37.138.103',
+
+    }
+}
 
 
 # Password validation
@@ -151,3 +151,4 @@ SZEROKOSC = 1700
 WYSOKOSC = 600
 POINT_SIZE = 8
 ILOSC_ODCZYTOW = 20
+

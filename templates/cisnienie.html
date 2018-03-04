@@ -74,12 +74,10 @@
           legend: { position: 'bottom' }
         };
     setTimeout(function(){
-   getById(test).reload(1);
-}, 5000);
+    $('#test')
+}, 1000);
 </script>
 {% endblock %}
 {% block content %}
-    <div test>
     {{ chart.as_html }}
-</div>
 {% endblock %}

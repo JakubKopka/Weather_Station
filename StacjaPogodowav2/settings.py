@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'StacjaPogodowav2.wsgi.application'
 # }
 
 # Baza danych na server
-#
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -150,5 +150,7 @@ STATICFILES_DIRS = (
 SZEROKOSC = 1700
 WYSOKOSC = 600
 POINT_SIZE = 8
-ILOSC_ODCZYTOW = 20
+ILOSC_ODCZYTOW = 40
 
+# Opcje Arima:
+Order = (5, 1, 0)

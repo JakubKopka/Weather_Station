@@ -3,26 +3,23 @@
 
 {% endblock %}
 {% block content %}
-    <table style="width:100%">
-        <tr>
-            <th>ID</th>
-            <th>Data Odczytu</th>
-            <th>Temperatura</th>
-            <th>Wilgotność</th>
-            <th>Cisnienie</th>
-            <th>Siła Waitru</th>
-{#            <th>Kierunek Waitru</th>#}
-        </tr>
-        {% for o in odczyty %}
-            <tr>
-                <td> {{ o.id }}</td>
-                <td>{{ o.data_odczytu|date:'Y-m-d H:i:s' }}</td>
-                <td>{{ o.temperatura }}</td>
-                <td>{{ o.wilgotnosc }}</td>
-                <td>{{ o.cisnienie }}</td>
-{#                <td>{{ o.kierunek_wiatru }}</td>#}
-            </tr>
-        {% endfor %}
-    </table>
+{#    <table style="width:100%">#}
+{#        <tr>#}
+{#            <th>ID</th>#}
+{#            <th>Data Odczytu</th>#}
+{#            <th>Temperatura</th>#}
+{#            <th>Wilgotność</th>#}
+{#            <th>Cisnienie</th>#}
+{#        </tr>#}
+{#        {% for o in odczyty %}#}
+{#            <tr>#}
+{#                <td> {{ o.id }}</td>#}
+{#                <td>{{ o.data_odczytu|date:'Y-m-d H:i:s' }}</td>#}
+{#                <td>{{ o.temperatura }}</td>#}
+{#                <td>{{ o.wilgotnosc }}</td>#}
+{#                <td>{{ o.cisnienie }}</td>#}
+{#            </tr>#}
+{#        {% endfor %}#}
+{#    </table>#}
 
 {% endblock %}

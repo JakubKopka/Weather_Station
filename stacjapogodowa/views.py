@@ -10,7 +10,7 @@ from django.utils import timezone
 
 
 from django.views.generic.base import TemplateView
-from stacjapogodowa.models import Odczyty
+from stacjapogodowa.models import Odczyty, Odczyty_10, Odczyty_50
 
 
 class StronaGlownaView(TemplateView):
@@ -19,7 +19,9 @@ class StronaGlownaView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(StronaGlownaView, self).get_context_data(**kwargs)
-        context['odczyty'] = Odczyty.objects.all()
+        odczyty = Odczyty.objects.all()
+        odczyty = reversed(odczyty)
+        context['odczyty'] = odczyty
         context['title'] = self.title
         return context
 
@@ -30,6 +32,7 @@ class TemperaturaView(TemplateView):
 
     def get_context_data(self, **kwargs):
         odczyty = Odczyty.objects.all().order_by('-id')[:settings.ILOSC_ODCZYTOW]
+        odczyty_50 = Odczyty_10.objects
         odczyty = reversed(odczyty)
 
         data = [
@@ -37,7 +40,7 @@ class TemperaturaView(TemplateView):
         ]
         for i in odczyty:
             data2 = i.data_odczytu.strftime('%H:%M')
-            data.append([data2, i.temperatura, 0])
+            data.append([data2, i.temperatura])
 
         # DataSource object
         data_source = SimpleDataSource(data=data)
@@ -105,7 +108,8 @@ class CisnienieView(TemplateView):
         # for i in x:
         #     print i.data_odczytu
 
-        odczyty = Odczyty.objects.all()[:settings.ILOSC_ODCZYTOW]
+        odczyty = Odczyty.objects.all().order_by('-id')[:settings.ILOSC_ODCZYTOW]
+        odczyty = reversed(odczyty)
 
         data = [
             ['Data', 'Odczyty', 'Algorytm'],

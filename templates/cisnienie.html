@@ -68,16 +68,31 @@
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
     google.load("visualization", "1", {packages:["corechart"]});
-    var options = {
-          title: 'Company Performance',
-          curveType: 'function',
-          legend: { position: 'bottom' }
-        };
-    setTimeout(function(){
-    $('#test')
-}, 1000);
 </script>
 {% endblock %}
 {% block content %}
     {{ chart.as_html }}
+    <center>
+    <font size="3">
+        <table style="width:20%">
+            <tr>
+                <th>Algorytm</th>
+                <th>MAE</th>
+                <th>RMSE</th>
+            </tr>
+            <tr>
+                <td>Algorytm dla 10</td>
+                <td> {{ MAE_10 }} hPa</td>
+                <td>{{ RMSE_10 }} hPa</td>
+            </tr>
+            <tr>
+                <td>Algorytm dla 50</td>
+                <td>{{ MAE_50 }} hPa</td>
+                <td>{{ RMSE_50 }} hPa</td>
+            </tr>
+        </table>
+    </font>
+        <br>MAE - średni błąd bezwzględny
+        <br>RMSE - pierwiastek błędu średniokwadratowego
+    </center>
 {% endblock %}

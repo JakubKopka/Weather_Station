@@ -8,12 +8,35 @@
 
 {% extends 'base.html' %}
 {% block extra_js %}
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<script type="text/javascript">
-    google.load("visualization", "1", {packages:["corechart"]});
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+        google.load("visualization", "1", {packages: ["corechart"]});
 
-</script>
+    </script>
 {% endblock %}
 {% block content %}
     {{ chart.as_html }}
+    <center>
+    <font size="3">
+        <table style="width:20%">
+            <tr>
+                <th>Algorytm</th>
+                <th>MAE</th>
+                <th>RMSE</th>
+            </tr>
+            <tr>
+                <td>Algorytm dla 10</td>
+                <td> {{ MAE_10 }} °C</td>
+                <td>{{ RMSE_10 }} °C</td>
+            </tr>
+            <tr>
+                <td>Algorytm dla 50</td>
+                <td>{{ MAE_50 }} °C</td>
+                <td>{{ RMSE_50 }} °C</td>
+            </tr>
+        </table>
+    </font>
+        <br>MAE - średni błąd bezwzględny
+        <br>RMSE - pierwiastek błędu średniokwadratowego
+    </center>
 {% endblock %}

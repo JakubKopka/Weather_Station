@@ -1,21 +1,37 @@
-{#{% extends 'base.html' %}#}
-{#{% block extra_js %}#}
-{##}
-{#{% endblock %}#}
-{#{% block content %}#}
-{#    Cos tam#}
-{#{% endblock %}#}
 
 {% extends 'base.html' %}
 {% block extra_js %}
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+
+
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
         google.load("visualization", "1", {packages: ["corechart"]});
 
     </script>
+<script type="text/javascript">
+   $(document).ready(function() {
+       setInterval(function() {
+           var ilosc_odczytow = {{ ilosc }};
+  $.ajax({
+                 type:"GET",
+                 url:"/temperatura/",
+                 data: {'ilosc_odczytow': ilosc_odczytow},
+                 success: function(data) {
+                     if (data == 1) {
+                         location.reload();
+                     }
+
+                 }
+            });
+}, 1000);
+
+    });
+</script>
 {% endblock %}
 {% block content %}
     {{ chart.as_html }}
+{{ csrf_token }}
     <center>
     <font size="3">
         <table style="width:20%">

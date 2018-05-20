@@ -16,12 +16,13 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 
-from stacjapogodowa.views import StronaGlownaView, TemperaturaView, CisnienieView, WilgotnoscView
+from stacjapogodowa import views
+from stacjapogodowa.views import StronaGlownaView, TemperaturaView, CisnienieView, WilgotnoscView, temperatura
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', StronaGlownaView.as_view(), name='StronaGlowna'),
-    url(r'^temperatura/', TemperaturaView.as_view(), name='Temperatura'),
+    url(r'^temperatura/', temperatura, name='Temperatura'),
     url(r'^cisnienie/', CisnienieView.as_view(), name='Cisnienie'),
     url(r'^wilgotnosc/', WilgotnoscView.as_view(), name='Wilgotnosc'),
 ]

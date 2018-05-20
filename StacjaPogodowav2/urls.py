@@ -17,12 +17,12 @@ from django.conf.urls import url
 from django.contrib import admin
 
 from stacjapogodowa import views
-from stacjapogodowa.views import StronaGlownaView, TemperaturaView, CisnienieView, WilgotnoscView, temperatura
+from stacjapogodowa.views import StronaGlownaView, TemperaturaView, CisnienieView, WilgotnoscView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', StronaGlownaView.as_view(), name='StronaGlowna'),
-    url(r'^temperatura/', temperatura, name='Temperatura'),
+    url(r'^temperatura/', TemperaturaView.as_view(), name='Temperatura'),
     url(r'^cisnienie/', CisnienieView.as_view(), name='Cisnienie'),
     url(r'^wilgotnosc/', WilgotnoscView.as_view(), name='Wilgotnosc'),
 ]

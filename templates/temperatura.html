@@ -1,4 +1,3 @@
-
 {% extends 'base.html' %}
 {% block extra_js %}
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
@@ -9,49 +8,40 @@
         google.load("visualization", "1", {packages: ["corechart"]});
 
     </script>
-<script type="text/javascript">
-   $(document).ready(function() {
-       setInterval(function() {
-           var ilosc_odczytow = {{ ilosc }};
-  $.ajax({
-                 type:"GET",
-                 url:"/temperatura/",
-                 data: {'ilosc_odczytow': ilosc_odczytow},
-                 success: function(data) {
-                     if (data == 1) {
-                         location.reload();
-                     }
+    <script type="text/javascript">
+        $(document).ready(function () {
+            setInterval(function () {
+                var d = new Date();
+                if (d.getMinutes() % 3 == 0 && d.getSeconds() >0 && d.getSeconds() <= 3) {
+                    location.reload();
+                }
+            }, 1000);
 
-                 }
-            });
-}, 1000);
-
-    });
-</script>
+        });
+    </script>
 {% endblock %}
 {% block content %}
     {{ chart.as_html }}
-{{ csrf_token }}
     <center>
-    <font size="3">
-        <table style="width:20%">
-            <tr>
-                <th>Algorytm</th>
-                <th>MAE</th>
-                <th>RMSE</th>
-            </tr>
-            <tr>
-                <td>Algorytm dla 10</td>
-                <td> {{ MAE_10 }} °C</td>
-                <td>{{ RMSE_10 }} °C</td>
-            </tr>
-            <tr>
-                <td>Algorytm dla 50</td>
-                <td>{{ MAE_50 }} °C</td>
-                <td>{{ RMSE_50 }} °C</td>
-            </tr>
-        </table>
-    </font>
+        <font size="3">
+            <table style="width:20%">
+                <tr>
+                    <th>Algorytm</th>
+                    <th>MAE</th>
+                    <th>RMSE</th>
+                </tr>
+                <tr>
+                    <td>Algorytm dla 10</td>
+                    <td> {{ MAE_10 }} °C</td>
+                    <td>{{ RMSE_10 }} °C</td>
+                </tr>
+                <tr>
+                    <td>Algorytm dla 50</td>
+                    <td>{{ MAE_50 }} °C</td>
+                    <td>{{ RMSE_50 }} °C</td>
+                </tr>
+            </table>
+        </font>
         <br>MAE - średni błąd bezwzględny
         <br>RMSE - pierwiastek błędu średniokwadratowego
     </center>

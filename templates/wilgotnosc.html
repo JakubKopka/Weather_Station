@@ -1,32 +1,43 @@
 {% extends 'base.html' %}
 {% block extra_js %}
-<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-<script type="text/javascript">
-    google.load("visualization", "1", {packages:["corechart"]});
-</script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+        google.load("visualization", "1", {packages: ["corechart"]});
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            setInterval(function () {
+                var d = new Date();
+                if (d.getMinutes() % 3 == 0 && d.getSeconds() > 0 && d.getSeconds() <= 3) {
+                    location.reload();
+                }
+            }, 1000);
+
+        });
+    </script>
 {% endblock %}
 {% block content %}
     {{ chart.as_html }}
     <center>
-    <font size="3">
-        <table style="width:20%">
-            <tr>
-                <th>Algorytm</th>
-                <th>MAE</th>
-                <th>RMSE</th>
-            </tr>
-            <tr>
-                <td>Algorytm dla 10</td>
-                <td> {{ MAE_10 }} %</td>
-                <td>{{ RMSE_10 }} %</td>
-            </tr>
-            <tr>
-                <td>Algorytm dla 50</td>
-                <td>{{ MAE_50 }} %</td>
-                <td>{{ RMSE_50 }} %</td>
-            </tr>
-        </table>
-    </font>
+        <font size="3">
+            <table style="width:20%">
+                <tr>
+                    <th>Algorytm</th>
+                    <th>MAE</th>
+                    <th>RMSE</th>
+                </tr>
+                <tr>
+                    <td>Algorytm dla 10</td>
+                    <td> {{ MAE_10 }} %</td>
+                    <td>{{ RMSE_10 }} %</td>
+                </tr>
+                <tr>
+                    <td>Algorytm dla 50</td>
+                    <td>{{ MAE_50 }} %</td>
+                    <td>{{ RMSE_50 }} %</td>
+                </tr>
+            </table>
+        </font>
         <br>MAE - średni błąd bezwzględny
         <br>RMSE - pierwiastek błędu średniokwadratowego
     </center>

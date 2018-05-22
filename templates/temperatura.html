@@ -12,7 +12,7 @@
         $(document).ready(function () {
             setInterval(function () {
                 var d = new Date();
-                if (d.getMinutes() % 3 == 0 && d.getSeconds() >0 && d.getSeconds() <= 3) {
+                if (d.getMinutes() % 3 == 0 && d.getSeconds() > 0 && d.getSeconds() <= 3) {
                     location.reload();
                 }
             }, 1000);

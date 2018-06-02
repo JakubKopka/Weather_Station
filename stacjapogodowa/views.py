@@ -5,6 +5,7 @@ import datetime
 
 import math
 
+import django
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
@@ -138,7 +139,7 @@ class TemperaturaView(TemplateView):
             context['ilosc'] = len(Odczyty.objects.all())
         else:
             context['ilosc'] = 0
-
+        print(dir(django.db.backends.mysql))
         return context
 
 

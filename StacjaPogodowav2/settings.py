@@ -96,7 +96,6 @@ DATABASES = {
         'USER': 'monty',
         'PASSWORD': 'some_pass',
         'HOST': '54.37.138.103',
-
     }
 }
 

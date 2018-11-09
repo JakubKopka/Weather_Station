@@ -12,10 +12,10 @@ while True:
         print now.minute
         last_minute = now.minute
         try:
-            db = MySQLdb.connect(host="54.37.138.103",  # your host, usually localhost
-                                user="monty",  # your username
-                                passwd="some_pass",  # your password
-                                db="PracaLicencjacka")  # name of the data base
+            db = MySQLdb.connect(host="",  # your host, usually localhost
+                                user="",  # your username
+                                passwd="",  # your password
+                                db="")  # name of the data base
             cur = db.cursor()
             temperature, pressure, humidity = bme280.readBME280All()
             data = datetime.now().strftime("%Y-%m-%d %H:%M")

@@ -41,20 +41,20 @@ def RMSE(abs):
     else:
         return 0
 
-class StronaGlownaView(TemplateView):
+class MainPageView(TemplateView):
     title = 'Strona Główna'
     template_name = 'index.html'
 
     def get_context_data(self, **kwargs):
-        context = super(StronaGlownaView, self).get_context_data(**kwargs)
+        context = super(MainPageView, self).get_context_data(**kwargs)
         odczyty = Odczyty.objects.all()
         odczyty = reversed(odczyty)
         context['odczyty'] = odczyty
         context['title'] = self.title
         return context
 
-class TemperaturaView(TemplateView):
-    template_name = 'temperatura.html'
+class TemperatureView(TemplateView):
+    template_name = 'temperature.html'
     title = 'Temperatura'
 
     def get_context_data(self, **kwargs):
@@ -144,8 +144,8 @@ class TemperaturaView(TemplateView):
 
 
 
-class WilgotnoscView(TemplateView):
-    template_name = 'wilgotnosc.html'
+class HumidityView(TemplateView):
+    template_name = 'humidity.html'
     title = 'Wilgotność'
 
     def get_context_data(self, **kwargs):
@@ -223,8 +223,8 @@ class WilgotnoscView(TemplateView):
 
         return context
 
-class CisnienieView(TemplateView):
-    template_name = 'cisnienie.html'
+class PressureView(TemplateView):
+    template_name = 'pressure.html'
     title = 'Ciśnienie'
 
     def get_context_data(self, **kwargs):
@@ -301,10 +301,6 @@ class CisnienieView(TemplateView):
         context['RMSE_50'] = RMSE(abs_50)
 
         return context
-
-
-from django.shortcuts import render_to_response
-from django.http import HttpResponse
 
 
 
